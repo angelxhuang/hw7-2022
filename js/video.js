@@ -10,7 +10,7 @@ window.addEventListener("load", function() {
 
 document.querySelector("#play").addEventListener("click", function() {
 	console.log("Play Video");
-	document.querySelector("#volume").innerHTML = video.volume *100 + "%";
+	document.querySelector("#volume").innerHTML = video.volume * 100 + "%";
 	video.play();
 });
 
@@ -26,45 +26,43 @@ document.querySelector("#slower").addEventListener("click", function() {
 });
 
 document.querySelector("#faster").addEventListener("click", function() {
-	console.log("Speed Up")
+	console.log("Speed up Video")
 	video.playbackRate /= 0.9;
 	console.log("Speed is " + video.playbackRate)
 });
 
 document.querySelector("#skip").addEventListener("click", function() {
 	video.currentTime += 10
-	console.log("Timestamp" + video.currentTime) 
 	if (video.currentTime >= video.duration) {
 		video.currentTime = 0
 	}
-	console.log("Video's current time is " + video.currentTime)
+	console.log("Skip ahead")
+	console.log("Video current time is " + video.currentTime)
 });
 
 document.querySelector("#mute").addEventListener("click", function() {
-	if (video.muted == true) {
+	if (video.muted === true) {
 		video.muted = false
-		this.innerHTML = "Mute"
+		document.getElementById("mute").innerHTML = "Mute"
 		console.log("Unmute")
 	}
 	else {
 		video.muted = true
-		this.innerHTML = "Unmute"
+		document.getElementById("mute").innerHTML = "Unmute"
 		console.log("Mute")
 	}
 });
 
 document.querySelector("#slider").addEventListener("click", function() {
-	video.volume = this.value / 100;
+	video.volume = document.getElementById("slider").value / 100;
 	document.querySelector("#volume").innerHTML = video.volume * 100 + "%";
 	console.log("The current volume is " + video.volume);
 });
 
 document.querySelector("#vintage").addEventListener("click", function() {
 	video.classList.add("oldSchool");
-	console.log("Add oldSchool Class");
 });
 
 document.querySelector("#orig").addEventListener("click", function() {
 	video.classList.remove("oldSchool");
-	console.log("Remove oldSchool Class");
 });
